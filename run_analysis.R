@@ -1,5 +1,34 @@
-## !!!!!!!!
-## We assume
+## run_analysis.R
+## This script is developed according to the JHU DS Data Getting and Cleaning 
+## Coursera Course Project requirements.
+## The script is platform dependent and designed for MS Windows 7/8/10. (uses backslashes in file paths.)
+## -------------------------------------------------------------------------
+## This script reads data sets from the data directory "UCI HAR Dataset" , creates and outputs
+## a tidy data set as required by the Course Project assignement. Further information
+## is available from README.md and codebook.md files. 
+
+## USAGE 1: TO REVIEW THE OUTPUT OF THIS SCRIPT, uncomment and run the following pair of lines: 
+## tbl.review <- source("run_analysis.R")
+## View(tbl.review)
+
+## USAGE 2: TO REVIEW THE OUTPUT FILE step5.txt <b>stored in your working directory</b>, uncomment and run
+## the following pair of lines: 
+## df.review <- read.table("step5.txt", header = TRUE, stringsAsFactors =  FALSE)
+## View(df.review)
+
+## ATTENTION! The data directory "UCI HAR Dataset" should be in your working directory. 
+## To check this, run dir() and see if the dir() output contains "UCI HAR Dataset".
+## To obtain the data directory "UCI HAR Dataset", you can download a zip-archive from 
+## https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip0
+## and unzip the zip-file into your working folder so that the data directiry "UCI HAR Dataset" 
+## appear in your working directory.
+
+## ATTENTION! The scrips uses dplyr package. This package shoul be downloaded into your system.
+## Please run install.packages("dplyr"), to download the package. 
+
+
+#######################################################################################################
+#######################################################################################################
 
 ## ------- Step 0: Make preliminary arrangements and intruduce definitions
 
@@ -31,8 +60,8 @@ resFile.y_test <- ".\\UCI HAR Dataset\\test\\Y_test.txt"
 
 if(!require(dplyr)){ # We attemp to load library dplyr that is necessary for data sets processing 
         # If the library is not available, infrom the user and stop the script.
-        print("Library dplyr is not avalable. Please install the package dplyer.")
-        print("To install, you may call install.packages(\"dplyr\")")
+        print('Library dplyr is not avalable. Please install the package dplyer.')
+        print('To install, you may call install.packages("dplyr")')
         print ("and then re-run the script run_analysis.R .")
         print("The script stopped.")
         # return
@@ -169,7 +198,7 @@ tbl.step4 <- tbl.id_activity %>%
 rm("tbl.id_activity", "tbl.activity_labels", "tbl.subject", "tbl.extracted", "tbl.y")
 
 
-## ------- tbl.step4 contains the data set that meets the requremints of Steps 1--4
+## ------- Now tbl.step4 contains the data set that meets the requremints of Steps 1--4
 
 
 ## ------- Step 5: From the data set in step 4, create a second, 
@@ -193,7 +222,7 @@ return(tbl.step5)
 ## TO REVIEW THE OUTPUT OF THIS SCRIPT, uncomment and run the following pair of lines: 
 ## tbl.review <- source("run_analysis.R")
 ## View(tbl.review)
-## ATTENTION! The data directory "UCI HAR Dataset" should be in you working directory. To check this,
+## ATTENTION! The data directory "UCI HAR Dataset" should be in your working directory. To check this,
 ## rus dir() and see if the dir() output contains "UCI HAR Dataset". 
 
 
