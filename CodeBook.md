@@ -10,7 +10,7 @@ assignment: jhu_ds_gcd_coursera_courseproject
 ---
 
 # Getting and Cleaning Data Course Project: Project Code Book
-submitted according to JHU DS Getting and Cleaning Data Courseara Course assignment
+submitted according to JHU DS Getting and Cleaning Data Coursera Course assignment
 
 ## Document goal
 
@@ -19,7 +19,7 @@ Following the Getting and Cleaning Data course project assignment, this CodeBook
 1. describes the variables, the data, and any transformations or work that we performed to clean up the data
 2. modifies and updates the available codebooks with the data to indicate all the variables and summaries calculated, along with units, and any other relevant information.
 
-According to the course project assignment we extensivly copy, cite, slightly update and modify the original data code book sources and then describe the data, variables, transformations, and work we performed. 
+According to the course project assignment we extensively copy, cite, slightly update and modify the original data code book sources and then describe the data, variables, transformations, and work we performed. 
 
 The original data source reference is provided at the end of this document. 
 
@@ -129,7 +129,7 @@ instructions how to obtain and place this directory. For the purposes of this do
 The relevant files and directories form the following tree:
 
 * \<working directory\>
-    + `run_analysis.R`  // is the script which performs all the transforamtions and analysis
+    + `run_analysis.R`  // is the script which performs all the transformations and analysis
     + `step5.txt`       // appears after the script has successfully run.
     + `UCI HAR Dataset`
          + `activity_labels.txt`
@@ -150,7 +150,7 @@ The relevant files and directories form the following tree:
 `activity_labels.txt` contains the descriptive names of activities.
 
 `features.txt` contains the descriptive names of variables in the tables with measurements results.
-The tables are kept separatly in `X_test.txt` and `X_train.txt`. 
+The tables are kept separately in `X_test.txt` and `X_train.txt`. 
 
 `X_test.txt` and `X_train.txt` files contain the separated test and train tables with measurements results.
 
@@ -158,7 +158,7 @@ The tables are kept separatly in `X_test.txt` and `X_train.txt`.
 
 `subject_test.txt` and `subject_train.txt` files contain the separated test and train one dimensional tables with subject IDs. The numbers of observations in these tables match those in `X_test.txt` and `X_train.txt`.
 
-We subsequently use the file names, to name correspondig data frames and tables in the script code and in *this* document. 
+We subsequently use the file names, to name corresponding data frames and tables in the script code and in *this* document. 
 
 ## Data set transformations
 
@@ -169,12 +169,12 @@ as well as "()" at the end of names with "" (the empty character sequence), to m
 
 We used these slightly transformed names, to properly name variables when downloading `X_test.txt` and `X_train.txt` files into `df.x_text` and `df.x_train` data frames in R workspace correspondingly.
 
-The names of these variables were no more changed since we got the original data set creators choices as an established standard, to keep the variables name understandible and pertable to other researchers.
+The names of these variables were no more changed since we got the original data set creators choices as an established standard, to keep the variables name understandable and portable to other researchers.
 
 #### Note:
 
 Along with this decision making, we should admit that this decision could be argued and there exist evident transformations applicable to the variable names (split the names, create new variables that represent some measurements classes, features, etc). In our opinion, the final 
-choice depends on the goals to aim at. To meet the assignment requrement to group by and summarize the selected measuremnt variables with `mean`, we should keep those names as they are.
+choice depends on the goals to aim at. To meet the assignment requirement to group by and summarize the selected measurement variables with `mean`, we should keep those names as they are.
 
 ### Variables inclusion and exclusion criteria
 
@@ -196,7 +196,7 @@ substrings
 * tBodyGyroJerkMean
 * meanFreq
 
-We ignore these variables beacause they do not represent the measurements themselves,
+We ignore these variables because they do not represent the measurements themselves,
 instead, they represent a variety of measurement derivatives. 
 
 
@@ -259,11 +259,11 @@ The `df.y_train` and `df.y_test`  variable is named "id".
 ### Data frames converted with `tbl_df`
 
 All the data frames are converted to 'advanced' `dplyr` data frames with the `tbl_df` function
-and prefix thier names with `"tbl_"`.
+and prefix their names with `"tbl_"`.
 
 ### Binding training and test data frames 
 
-To merge training and tes data sets, we perform the following operations with data frames:
+To merge training and test data sets, we perform the following operations with data frames:
 
 * bind rows of `tbl.x_train`, `tbl.x_test`, to get `tbl_x`
 * bind rows of `tbl.y_train`, `tbl.y_test`, to get `tbl_y`
@@ -271,7 +271,7 @@ To merge training and tes data sets, we perform the following operations with da
 
 ### Extracting required variables and binding with activity and subject data frames
 
-To get the `tbl.step4` tidy data set as requred at step 4 of the assignment, 
+To get the `tbl.step4` tidy data set as required at step 4 of the assignment, 
 we perform the following transformations with data frames:
 
 * extract subframe with mean and std measurement variables from `tbl.x` to `tbl.extracted`
@@ -296,7 +296,7 @@ To get the `tbl.step5` independent tidy data set with the average of each variab
 The resulting ``tbl.step5` independent tidy data set is
 
 * written into 'step5.txt' file in the working directory
-* returned as the output ot the script `run_analysis`. 
+* returned as the output of the script `run_analysis`. 
 
 ### Variable names in the resulting data set
 
