@@ -58,7 +58,7 @@ resFile.y_test <- ".\\UCI HAR Dataset\\test\\Y_test.txt"
 
 ## ------- Substep 0.2: Load library dplyr and check if there if the data directory in the working dirctory
 
-if(!require(dplyr)){ # We attemp to load library dplyr that is necessary for data sets processing 
+if(!require(dplyr, warn.conflicts = FALSE, quietly = TRUE)){ # We attemp to load library dplyr that is necessary for data sets processing 
         # If the library is not available, infrom the user and stop the script.
         print('Library dplyr is not avalable. Please install the package dplyer.')
         print('To install, you may call install.packages("dplyr")')
@@ -90,7 +90,18 @@ if(!file.exists(resFolder.data)){# We check if the data directory "UCI HAR Datas
 
 # 561 obs. of 1 var
 df.features <- read.table(resFile.features, sep = " ", stringsAsFactors =  FALSE)
-colnames <- df.features[,2]
+colnames_preliminary1 <- df.features[,2]
+colnames_preliminary2 <- gsub("()-",".",colnames_preliminary1, fixed = TRUE)
+colnames_preliminary3 <- gsub("()","",colnames_preliminary2, fixed = TRUE)
+colnames <- gsub("-",".",colnames_preliminary3, fixed = TRUE)
+
+# We need selected variable names in CodeBook.rm
+colnames.mean.selector <- "\\.mean\\.|\\.mean$"
+colnames.std.selector <- "\\.std\\.|\\.std$"
+
+colnames.mean <- grep(colnames.mean.selector, colnames, value = TRUE)
+colnames.std <- grep(colnames.std.selector, colnames, value = TRUE)
+
 rm("df.features") # We need df.features no longer since we have colnames variable
 
 # 6 obs. of 2 vars
@@ -169,7 +180,7 @@ rm("tbl.x_train", "tbl.x_test", "tbl.y_train", "tbl.y_test",
 ## We should remove the train and test data frames after their merging, 
 ## to keep the used memory size reasonable
 
-tbl.extracted <- select(tbl.x,contains(".mean."), contains(".std."))
+tbl.extracted <- select(tbl.x,contains(colnames.mean.selector), contains(colnames.std.selector))
 
 
 ## We should remove the tbl.x after extracting a new data set from this one, 
