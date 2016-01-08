@@ -3,7 +3,7 @@
 ## Coursera Course Project requirements.
 ## The script is platform dependent and designed for MS Windows 7/8/10. (uses backslashes in file paths.)
 ## -------------------------------------------------------------------------
-## This script reads data sets from the data directory "UCI HAR Dataset" , creates and outputs
+## This script reads data sets from the data directory "UCI HAR Dataset", creates and outputs
 ## a tidy data set as required by the Course Project assignement. Further information
 ## is available from README.md and codebook.md files. 
 
@@ -20,10 +20,10 @@
 ## To check this, run dir() and see if the dir() output contains "UCI HAR Dataset".
 ## To obtain the data directory "UCI HAR Dataset", you can download a zip-archive from 
 ## https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip0
-## and unzip the zip-file into your working folder so that the data directiry "UCI HAR Dataset" 
+## and unzip the zip-file into your working folder so that the data directory "UCI HAR Dataset" 
 ## appear in your working directory.
 
-## ATTENTION! The scrips uses dplyr package. This package shoul be downloaded into your system.
+## ATTENTION! The scrips uses dplyr package. This package should be downloaded into your system.
 ## Please run install.packages("dplyr"), to download the package. 
 
 
@@ -56,7 +56,7 @@ resFile.y_train <- ".\\UCI HAR Dataset\\train\\Y_train.txt"
 resFile.y_test <- ".\\UCI HAR Dataset\\test\\Y_test.txt"
 
 
-## ------- Substep 0.2: Load library dplyr and check if there if the data directory in the working dirctory
+## ------- Substep 0.2: Load library dplyr and check if there is the data directory in the working dirctory
 
 if(!require(dplyr, warn.conflicts = FALSE, quietly = TRUE)){ # We attemp to load library dplyr that is necessary for data sets processing 
         # If the library is not available, infrom the user and stop the script.
@@ -65,14 +65,14 @@ if(!require(dplyr, warn.conflicts = FALSE, quietly = TRUE)){ # We attemp to load
         print ("and then re-run the script run_analysis.R .")
         print("The script stopped.")
         # return
-        stop("Library dplyr is not avalable.")
+        stop("Library dplyr is not available.")
 }
 
 
 if(!file.exists(resFolder.data)){# We check if the data directory "UCI HAR Dataset" with requred datasets
                                  # exists in the working folder.
         # If the the data directory "UCI HAR Dataset" does not exist in the working folder, 
-        # inform the user and stop the script
+        # inform the user and stop the script.
         print("The working directory does not contain the data directory 'UCI HAR Dataset'. ")
         print("Please copy the data directory 'UCI HAR Dataset' into your working directory.")
         print("To do this, you can download a zip-archive from ")
@@ -230,17 +230,3 @@ write.table(tbl.step5, file=".\\step5.txt", row.name=FALSE)
 ## ------- Output the tidy data set tbl.step5
 
 return(tbl.step5)
-
-## TO REVIEW THE OUTPUT OF THIS SCRIPT, uncomment and run the following pair of lines: 
-## tbl.review <- source("run_analysis.R")
-## View(tbl.review)
-## ATTENTION! The data directory "UCI HAR Dataset" should be in your working directory. To check this,
-## rus dir() and see if the dir() output contains "UCI HAR Dataset". 
-
-
-## TO REVIEW THE OUTPUT FILE step5.txt <b>stored in your working directory</b>, uncomment and run
-## the following pair of lines: 
-## df.review <- read.table("step5.txt", header = TRUE, stringsAsFactors =  FALSE)
-## View(df.review)
-## ATTENTION! The data directory "UCI HAR Dataset" should be in you working directory. To check this,
-## rus dir() and see if the dir() output contains "UCI HAR Dataset".
