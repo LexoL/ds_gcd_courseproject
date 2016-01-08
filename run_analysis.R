@@ -101,6 +101,7 @@ colnames.std.selector <- "\\.std\\.|\\.std$"
 
 colnames.mean <- grep(colnames.mean.selector, colnames, value = TRUE)
 colnames.std <- grep(colnames.std.selector, colnames, value = TRUE)
+colnames.selected <- c(colnames.mean, colnames.std)
 
 rm("df.features") # We need df.features no longer since we have colnames variable
 
@@ -180,7 +181,7 @@ rm("tbl.x_train", "tbl.x_test", "tbl.y_train", "tbl.y_test",
 ## We should remove the train and test data frames after their merging, 
 ## to keep the used memory size reasonable
 
-tbl.extracted <- select(tbl.x,contains(colnames.mean.selector), contains(colnames.std.selector))
+tbl.extracted <- select(tbl.x,matches(colnames.mean.selector), matches(colnames.std.selector))
 
 
 ## We should remove the tbl.x after extracting a new data set from this one, 
